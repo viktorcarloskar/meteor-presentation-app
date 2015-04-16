@@ -1,0 +1,49 @@
+<head>
+  	<title>presentation-app</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#2B2C3B">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<body>
+</body>
+
+<template name="interact">
+	<div id="interact">
+		<div id="interactions">
+			<div id="like-button"><i class="fa fa-heart-o"><i class="fa fa-heart"></i></i></div>
+			<form>
+				<input type="text" name="commentText" placeholder="Skriv en fin kommentar">
+				<button type="submit"><i class="fa fa-paper-plane"></i></button>
+			</form>
+		</div>
+		{{>comment}}	
+	</div>
+</template>
+
+<template name="comment">
+	<div id="comments">
+		{{#each comments}}
+			<div class="comment-wrapper">
+				{{#if isGif}}
+					<div class="comment"><img src="{{comment}}"></div>
+				{{else}}
+					<div class="comment">{{comment}}</div>
+				{{/if}}
+			</div>
+		{{/each}}
+	</div>
+</template>
+
+<template name="presentation">
+	<div id="presentation">
+		<iframe src="http://slides.com/viktorgustafsson/deck/live" frameborder="0" width="100%" height="100%"></iframe>
+
+		<div id="overlay">
+			{{>comment}}
+			{{#each likes}}
+				<div class="like" style="left: {{like_left}}px; top: {{like_top}}px"><i class="fa fa-heart"></i></div>
+			{{/each}}
+		</div>
+	</div>
+</template>
